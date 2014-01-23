@@ -7,9 +7,5 @@ angular.module('app').controller('Feedback', function($scope, $http, $log){
 
   $scope.save = function(workshop){
     $log.info('Thanks for the ' + workshop.score + '!');
-
-    $http.post('http://openwebstack.aws.af.cm/feedback', workshop).success(function(res){
-      console.log('res', res);
-    });
   };
 });
