@@ -4,18 +4,20 @@ angular.module('app').controller('Feedback', function($scope, FeedbackService, $
   };
 
   $scope.save = FeedbackService.sendFeedback;
-  function addZero(num) {
-    return (num < 10 ? '0' : '') + num;
-  }
-  var d = new Date();
-  var formattedDate = d.getFullYear() + '-' + addZero(d.getMonth() + 1) + '-' + addZero(d.getDate());
+
+  var formattedDate = FeedbackService.generateFormattedDate();
   var url = 'https://ng-workshop.firebaseio.com/chat/' + formattedDate;
   var chatRef = new Firebase(url);
+
+  // This is the magic line for 3 way binding!
   $scope.messages = $firebase(chatRef);
+  
   $scope.addMessage = function(e) {
     if (e.keyCode != 13) return;
-    $scope.messages.$add({from: $scope.workshop.attendee, body: $scope.msg});
+    $scope.messages.$add({
+      from: $scope.workshop.attendee,
+      body: $scope.msg
+    });
     $scope.msg = '';
   };
-  $scope.autoscroll = true;
 });
