@@ -1,6 +1,4 @@
 angular.module('app').controller('Feedback', function($scope){
-  var keystrokes;
-
   $scope.workshop = {
     score : 10
   };
