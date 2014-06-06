@@ -3,7 +3,7 @@ angular.module('app').directive('checkhuman', function(){
     restrict: 'E',
     templateUrl: 'check-human.html',
     scope: {
-      valid: "=valid"
+      valid: "="
     },
     link: function postLink(scope) {
       scope.valid = false;
