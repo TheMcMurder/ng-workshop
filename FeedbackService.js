@@ -10,7 +10,7 @@ angular.module('app').factory('FeedbackService', function($log) {
     },
     sendFeedback: function(workshop) {
       var formattedDate = service.generateFormattedDate();
-      var url = 'https://ng-workshop.firebaseio.com/feedback/' + formattedDate;
+      var url = 'https://burning-inferno-7602.firebaseio.com/feedback/' + formattedDate;
       var feedback = new Firebase(url);
       $log.info('Thanks for the ' + workshop.score + '!');
       feedback.push(workshop);
